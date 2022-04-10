@@ -16,8 +16,8 @@ export class CustomersResolver {
     private purchaseService: PurchasesService,
   ) {}
 
-  @UseGuards(AuthorizationGuard)
   @Query(() => Customer)
+  @UseGuards(AuthorizationGuard)
   me(@CurrentUser() user: AuthUser) {
     return this.customerService.getCustomerByAuthUserId(user.sub);
   }
